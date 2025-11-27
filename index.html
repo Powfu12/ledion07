@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnonClub - Premium Anonymous Prepaid Cards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #10b981;
+            --secondary-dark: #059669;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --dark-lighter: #334155;
+            --gray: #475569;
+--gray-light: #e2e8f0;
+--gray-lighter: #f1f5f9;
+
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-bg-hover: rgba(255, 255, 255, 0.12);
+            --border: rgba(255, 255, 255, 0.12);
+            --border-hover: rgba(255, 255, 255, 0.2);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-xl: 0 35px 60px -12px rgba(0, 0, 0, 0.4);
+            --blur: blur(16px);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: var(--blur);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: var(--shadow-lg);
+            border-bottom-color: var(--border-hover);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.025em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .mobile-menu span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 140px 0 80px 0;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-lighter) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* Order Now Pay Later Banner */
+        .pay-later-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(16, 185, 129, 0.15));
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            backdrop-filter: var(--blur);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+            animation: pulse-glow 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pay-later-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.05),
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+                border-color: var(--primary);
+            }
+            50% {
+                box-shadow: 0 8px 40px rgba(99, 102, 241, 0.5);
+                border-color: var(--primary-light);
+            }
+        }
+
+        .pay-later-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .pay-later-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pay-later-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pay-later-badge {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pay-later-description {
+            color: var(--gray-lighter);
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1.125rem 2.25rem;
+            border: none;
+            border-radius: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                     cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--white);
+            border: 1px solid var(--border);
+            backdrop-filter: var(--blur);
+        }
+
+        .btn-secondary:hover {
+            background: var(--card-bg-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .trust-badge i {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Card Showcase */
+        .card-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .card-3d {
+            width: 380px;
+            height: 240px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+            transform: rotateY(180deg);
+        }
+
+        .card-logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 0.05em;
+        }
+
+        .card-chip {
+            width: 55px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            border-radius: 10px;
+            margin: 1.25rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-chip::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            background: linear-gradient(135deg, #e6c200, #d4af37);
+            border-radius: 4px;
+        }
+
+        .card-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .card-holder {
+            font-size: 1rem;
+            color: var(--gray-lighter);
+            font-weight: 500;
+        }
+
+        .card-brand {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .card-back-stripe {
+            background: #000;
+            height: 50px;
+            margin: 1.5rem -2.25rem;
+        }
+
+        .card-cvv {
+            background: #fff;
+            height: 40px;
+            margin: 1.5rem 1.5rem;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 1rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+
+        .card-info {
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--gray-lighter);
+            line-height: 1.5;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-lighter) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-light);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* How It Works */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: var(--blur);
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+            background: var(--card-bg-hover);
+        }
+
+        .step-card:hover::before {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--white);
+            margin: 0 auto 2rem;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--white);
+        }
+
+        .step-description {
+            font-size: 0.95rem;
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+
+        /* Packages */
+        .packages-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .package-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: var(--blur);
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(16, 185, 129, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--border-hover);
+        }
+
+        .package-card:hover::before {
+            opacity: 1;
+        }
+
+        .package-card.featured {
+             border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .package-card.featured:hover {
+            transform: scale(1.05) translateY(-12px);
+        }
+
+        .package-card.tutorial {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+}
+
+
+        .package-price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 0.75rem
+            letter-spacing: -0.02em;
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 2.5rem 0;
+            text-align: left;
+        }
+
+        .package-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .package-features i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            width: 16px;
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tutorial .package-badge {
+            background: var(--accent);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: var(--blur);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            background: var(--card-bg-hover);
+            border-color: var(--border-hover);
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.25rem;
+            color: var(--white);
+            margin: 0 auto 2rem;
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--white);
+        }
+
+        .feature-description {
+            color: var(--gray-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: var(--blur);
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--card-bg-hover);
+        }
+
+        .faq-question i {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 2rem 2rem;
+            max-height: 250px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer p {
+            color: var(--gray-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-light);
+            border-top: 1px solid var(--border);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-section p {
+            color: var(--gray-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--gray-light);
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-icons i {
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-icons i:nth-child(1) { color: var(--secondary); }
+        .footer-icons i:nth-child(2) { color: var(--primary); }
+        .footer-icons i:nth-child(3) { color: var(--accent); }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--gray-light);
+            font-size: 0.95rem;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 10001;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive Design - ENHANCED FOR MOBILE */
+        @media (max-width: 1024px) {
+            .packages-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .steps-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content {
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .card-3d {
+                width: 340px;
+                height: 215px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: var(--blur);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 3rem;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-right: 1px solid var(--border);
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.25rem;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 120px 0 60px 0;
+                min-height: auto;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            /* Pay Later Banner - Mobile Optimized */
+            .pay-later-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+
+            .pay-later-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.75rem;
+            }
+
+            .pay-later-title {
+                font-size: 1.25rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .pay-later-description {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1.25rem 2rem;
+            }
+
+            .trust-badges {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .trust-badge {
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .packages-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .package-card.featured {
+                transform: none;
+            }
+.package-card.standard-gold {
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+}
+
+            .package-card.featured:hover {
+                transform: translateY(-12px);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+
+            .card-3d {
+                width: 100%;
+                max-width: 340px;
+                                height: 215px;
+            }
+
+            .card-face {
+                padding: 1.75rem;
+            }
+
+            .card-number {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .package-price {
+                font-size: 2.5rem;
+            }
+
+            .package-title {
+                font-size: 1.25rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .card-3d {
+                width: 100%;
+                max-width: 300px;
+                height: 190px;
+            }
+
+            .card-face {
+                padding: 1.5rem;
+            }
+
+            .card-number {
+                font-size: 1.2rem;
+                letter-spacing: 0.1em;
+            }
+
+            .card-chip {
+                width: 45px;
+                height: 35px;
+            }
+
+            .step-card,
+            .feature-card,
+            .package-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5),
+                        0 0 40px rgba(99, 102, 241, 0.3),
+                        0 0 60px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-credit-card"></i>
+                    <span>AnonClub<span style="color: var(--primary);"></span></span>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-up">
+                    <h1>AnonClub CCs</h1>
+                    <p>Welcome to AnonClub. White Cards with verified loads- Ready for ATM,POS across all EU Zones.</p>
+                    
+                    <!-- Pay Later Banner -->
+                    <div class="pay-later-banner">
+                        <div class="pay-later-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="pay-later-content">
+                            <div class="pay-later-title">
+                                <span>Pay Later Option Available</span>
+                                <span class="pay-later-badge">NEW</span>
+                            </div>
+                            <p class="pay-later-description">
+                                Get your AnonClub Card delivered first — pay later, once it’s in your hands! No Up-front Payment.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="#packages" class="btn btn-primary">
+                            <span>Get Started Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary">
+                            <span>Learn More</span>
+                            <i class="fas fa-play-circle"></i>
+                        </a>
+                        <a href="reviews.html" class="btn btn-secondary">
+                            <span>Reviews</span>
+                            <i class="fas fa-crown"></i>
+                        </a>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>100% Secure</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-bolt"></i>
+                            <span>Fast Delivery</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-headset"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-showcase floating">
+                    <div class="card-3d" id="card3d">
+                        <div class="card-face card-front">
+                            <div class="card-logo">AnonClub</div>
+                            <div class="card-chip"></div>
+                            <div class="card-number">5412 7512 3456 7890</div>
+                            <div class="card-details">
+                                <div class="card-holder">JOHN DOE</div>
+                                <div class="card-brand">VISA</div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="card-back-stripe"></div>
+                            <div class="card-cvv">123</div>
+                            <div class="card-info">
+                                This card is property of AnonClub<br>
+                                For customer service contact us on telegram.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Get your AnonClub card in just 5 simple steps. Fast, secure, and hassle-free process.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Place your order</h3>
+                    <p class="step-description">Fill your order and contact the admin to pay for the shipping fee. You’ll receive an order reference and confirmation.</p>
+                </div>
+
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Quality check & processing</h3>
+                    <p class="step-description">Our team inspects every card to make sure it meets the  standards before it’s packed for dispatch.</p>
+                </div>
+
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Secure shipping with tracking</h3>
+                    <p class="step-description">We ship with trusted couriers. Delivery usually takes 1–5 business days and tracking is provided.</p>
+                </div>
+
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title"> Pay after delivery</h3>
+                    <p class="step-description">The card is paid only after it arrives. After you confirm receipt, you contact the admin to complete the payment so you can use your card.</p>
+                </div>
+
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Use & disposal</h3>
+                    <p class="step-description">The card is intended for ATM cash withdrawals. We recommend a withdrawal of €400 per day. After its intended use, the card should be disposed and put in the trash.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+   
+    <!-- Packages Section -->
+    <section class="section features" id="packages">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Our Packages</h2>
+                <p class="section-subtitle">Choose from our range of premium credit card packages. All cards come with instant delivery and 24/7 support.</p>
+            </div>
+
+            <div class="packages-container">
+                
+
+                <div class="package-card scroll-reveal">
+                    <div class="package-price">130€</div>
+                    <h3 class="package-title">Basic CC</h3>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i>  550€-600€           Balance</li>
+                        <li><i class="fas fa-times" style="color: #ef4444;"></i></i> VIP Group</li>
+                        <li><i class="fas fa-check"></i> Global Acceptance</li>
+                        <li><i class="fas fa-check"></i> Fast Delivery</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> Money Back Guarantee</li>
+                    </ul>
+                    <a href="order.html" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="package-card featured scroll-reveal">
+                    <div class="package-badge">Popular</div>
+                    <div class="package-price">168.50€</div>
+                    <h3 class="package-title">Standard CC</h3>
+                    <ul class="package-features">
+                       <li><i class="fas fa-check"></i> 1000€-1050€ Balance</li>
+                         <li><i class="fas fa-times" style="color: #ef4444;"></i></i> VIP Group</li>
+                        <li><i class="fas fa-check"></i> Global Acceptance</li>
+                        <li><i class="fas fa-check"></i> Fast Delivery</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> Money Back Guarantee</li>
+                    </ul>
+                    <a href="order1.html" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="package-card scroll-reveal">
+                    <div class="package-price">299€</div>
+                    <h3 class="package-title">Premium CCs</h3>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Get 2 cards of: 1000€-1050€ Balance</li>
+                        <li><i class="fas fa-check"></i> VIP Group</li>
+                        <li><i class="fas fa-check"></i> Global Acceptance</li>
+                        <li><i class="fas fa-check"></i> Fast Delivery</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i>Money Back Guarantee</li>
+                    </ul>
+                    <a href="order2.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="package-card tutorial scroll-reveal">
+                    <div class="package-badge">Tutorial</div>
+                    <div class="package-price">500€</div>
+                    <h3 class="package-title">CC Tutorial</h3>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i>1:1 Lesson Full Guide</li>
+                        <li><i class="fas fa-check"></i> VIP Group</li>
+                        <li><i class="fas fa-check"></i> Card reader</li>
+                        <li><i class="fas fa-check"></i> Skimmer </li>
+                        <li><i class="fas fa-check"></i> Softwares</li>
+                        <li><i class="fas fa-check"></i> 5x Blank Cards</li>
+                        <li><i class="fas fa-check"></i> Lifetime Access</li>
+                    </ul>
+                    <a href="https://t.me/ANONCLUBADMIN" class="btn btn-primary">Get Tutorial</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <div class="pay-later-banner" style="max-width: 700px; margin: 0 auto;">
+                    <div class="pay-later-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="pay-later-content">
+                        <div class="pay-later-title">
+                            <span>Flexible Payment Option</span>
+                        </div>
+                        <p class="pay-later-description">
+                            Order now & Pay later
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+ <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Why AnonClub?
+                </h2>
+                <p class="section-subtitle">We’ve been running the streets of the card game for a while — 5,000+ successful drops and still counting. Safe, fast, and just plain easy. Check below to see what we offer.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Pay After Delivery</h3>
+                    <p class="feature-description">No upfront payment required — you only pay after receiving your card. Just cover the shipping cost for full peace of mind.</p>
+                </div>
+
+
+  <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title">Fast DHL Shipping</h3>
+                    <p class="feature-description">We deliver through DHL Express for secure, trackable, and fast worldwide delivery — ensuring your card arrives safely and on time.</p>
+                </div>
+
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="feature-title">Global Compatibility</h3>
+                    <p class="feature-description">AnonClub Cards work seamlessly in ATMs and POS terminals worldwide, tested for flawless performance and reliability.</p>
+                </div>
+
+              
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced Encryption Technology</h3>
+                    <p class="feature-description">Our cards use multi-layer bank-grade encryption for maximum protection and complete transaction security.</p>
+                </div>
+
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-headphones-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Lifetime Guarantee</h3>
+                    <p class="feature-description">Every card comes with a lifetime replacement guarantee. If it ever stops working, we’ll send a new one free of charge.</p>
+                </div>
+
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="feature-title">Trusted Network</h3>
+                    <p class="feature-description">Built and refined over years of experience, AnonClub operates with precision, discretion, and trust in every transaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Got questions? We got answers — straight, simple, and no BS.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span>How do I order an AnonClub Card?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply fill out the order form on our website and confirm your shipping details. You’ll only pay the delivery cost — the card itself is paid after you receive it.
+</p>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span>When will I receive my card?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All cards are shipped via DHL Express, with tracking provided. Delivery typically takes 1–5 business days, depending on your location.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span> Do I need to provide any personal documents?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No ID verification is required. The process is 100% anonymous and private — your identity remains protected at every step.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span>Is my information safe?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. We use end-to-end encryption and never store sensitive personal data. Your privacy and anonymity are fully protected.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span>How do I pay after receiving the card?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your card arrives, you’ll need to contact the admin to complete the payment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span>What happens if my card doesn’t work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Every card includes a Lifetime Guarantee. If your card fails for any reason, we’ll replace it immediately at no cost.
+</p>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span>Is my information secure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We use bank-level encryption and security protocols to protect all your data. Your personal information and transaction details are never shared with third parties and are stored securely.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <span>Can I use the card anywhere?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. AnonClub Cards are globally compatible — they work at ATMs and POS terminals worldwide for cash withdrawals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section features" id="contact">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to start? still have answers? get in our Channel and contact the admin directly.</p>
+            </div>
+
+            <div class="features-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="feature-card scroll-reveal" style="cursor: pointer;" onclick="window.open('https://t.me/ANONCLUBADMIN', '_blank')">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #0088cc, #00aced);">
+                        <i class="fab fa-telegram-plane"></i>
+                    </div>
+                    <h3 class="feature-title">Telegram</h3>
+                    <p class="feature-description">Get instant responses on Telegram. Our fastest support channel for quick assistance.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://t.me/ANONCLUBADMIN" target="_blank" class="btn btn-primary" style="display: inline-flex;">
+                            <span>Message on Telegram</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+            
+
+                <div class="feature-card scroll-reveal" style="cursor: pointer;" onclick="window.location.href='mailto:support@anonclub.com'">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ea4335, #c5221f);">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="feature-title">Email</h3>
+                    <p class="feature-description">Send us an email for detailed inquiries. We respond within 2 hours during business hours.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="mailto:support@vccpro.com" class="btn btn-primary" style="display: inline-flex;">
+                            <span>Send Email</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;" class="scroll-reveal">
+                <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; max-width: 700px; margin: 0 auto; backdrop-filter: var(--blur);">
+                    <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--white);">
+                        <i class="fas fa-clock" style="color: var(--primary); margin-right: 0.5rem;"></i>
+                        Business Hours
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                        <div>
+                            <p style="color: var(--gray-light); margin-bottom: 0.5rem; font-weight: 600;">Monday - Friday</p>
+                            <p style="color: var(--white); font-size: 1.1rem; font-weight: 700;">9:00 AM - 10:00 PM</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--gray-light); margin-bottom: 0.5rem; font-weight: 600;">Saturday - Sunday</p>
+                            <p style="color: var(--white); font-size: 1.1rem; font-weight: 700;">10:00 AM - 8:00 PM</p>
+                        </div>
+                    </div>
+                    <p style="color: var(--secondary); margin-top: 1.5rem; font-weight: 600;">
+                        <i class="fas fa-info-circle"></i> Emergency support available 24/7 for existing customers
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <i class="fas fa-credit-card" style="color: var(--primary);"></i>
+                        AnonClub
+                    </h3>
+                    <p>Your go-to plug for White CC's — fast, secure, and smoother than your ex’s excuses. Welcome to AnonClub.</p>
+                    <div class="footer-icons">
+                        <i class="fab fa-telegram-plane"></i>
+                       
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#packages">Packages</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#" onclick="alert('Terms of Service'); return false;">Terms of Service</a>
+                    <a href="#" onclick="alert('Privacy Policy'); return false;">Privacy Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#packages">Credit Cards</a>
+                    <a href="#packages">CC Tutorial</a>
+                    <a href="#packages">Card Reload</a>
+                    <a href="#contact">Custom Solutions</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2021 AnonClub. All rights reserved. | Designed for secure transactions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenu.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenu.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Navbar Background on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.8)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // 3D Card Flip
+        const card3d = document.getElementById('card3d');
+        let isFlipped = false;
+
+        card3d.addEventListener('click', () => {
+            isFlipped = !isFlipped;
+            card3d.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+        });
+
+        // Auto flip card every 5 seconds
+        setInterval(() => {
+            isFlipped = !isFlipped;
+            card3d.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+        }, 5000);
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Animate numbers (for future stats section)
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Particle Background Effect (Optional Enhancement)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'rgba(99, 102, 241, 0.5)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = '-10px';
+            particle.style.transition = 'all 3s linear';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.style.top = window.innerHeight + 'px';
+                particle.style.opacity = '0';
+            }, 100);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 3100);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 300);
+
+        // Cursor Trail Effect (Optional Enhancement)
+        let cursorTrail = [];
+        const maxTrailLength = 20;
+
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 768) { // Only on desktop
+                const trail = document.createElement('div');
+                trail.style.position = 'fixed';
+                trail.style.width = '6px';
+                trail.style.height = '6px';
+                trail.style.background = 'rgba(99, 102, 241, 0.3)';
+                trail.style.borderRadius = '50%';
+                trail.style.pointerEvents = 'none';
+                trail.style.zIndex = '9999';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                trail.style.transition = 'all 0.5s ease';
+                
+                document.body.appendChild(trail);
+                cursorTrail.push(trail);
+                
+                if (cursorTrail.length > maxTrailLength) {
+                    const oldTrail = cursorTrail.shift();
+                    oldTrail.remove();
+                }
+                
+                setTimeout(() => {
+                    trail.style.opacity = '0';
+                    trail.style.transform = 'scale(0)';
+                }, 100);
+                
+                setTimeout(() => {
+                    trail.remove();
+                }, 600);
+            }
+        });
+
+        // Loading Animation on Page Load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add active class to current nav link
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Prevent right-click (optional security measure)
+        // Uncomment if you want to disable right-click
+        /*
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        */
+
+        // Copy protection (optional)
+        // Uncomment if you want to disable text selection
+        /*
+        document.addEventListener('selectstart', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        */
+
+        // Add hover effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect for hero section
+        
+
+        // Add typing effect to hero title (optional)
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Uncomment to enable typing effect
+        /*
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero-text h1');
+            const originalText = heroTitle.textContent;
+            typeWriter(heroTitle, originalText, 30);
+        });
+        */
+
+        // Add ripple effect to cards
+        document.querySelectorAll('.feature-card, .package-card, .step-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(99, 102, 241, 0.3)';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.pointerEvents = 'none';
+                
+                const rect = this.getBoundingClientRect();
+                ripple.style.left = (e.clientX - rect.left - 10) + 'px';
+                ripple.style.top = (e.clientY - rect.top - 10) + 'px';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                ripple.animate([
+                    { transform: 'scale(0)', opacity: 1 },
+                    { transform: 'scale(20)', opacity: 0 }
+                ], {
+                    duration: 600,
+                    easing: 'ease-out'
+                });
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add counter animation for stats (if you add a stats section)
+        function startCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Lazy loading for images (if you add images)
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Add scroll-to-top button
+        const scrollTopBtn = document.createElement('button');
+        scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        scrollTopBtn.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        `;
+        
+        document.body.appendChild(scrollTopBtn);
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.style.display = 'flex';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        scrollTopBtn.addEventListener('mouseenter', () => {
+            scrollTopBtn.style.transform = 'translateY(-5px) scale(1.1)';
+        });
+        
+        scrollTopBtn.addEventListener('mouseleave', () => {
+            scrollTopBtn.style.transform = 'translateY(0) scale(1)';
+        });
+
+        // Add notification system (optional)
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: ${type === 'success' ? 'var(--secondary)' : type === 'error' ? '#ef4444' : 'var(--primary)'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add CSS for notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+            
+            .nav-links a.active {
+                color: var(--primary);
+                font-weight: 700;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Example: Show welcome notification on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showNotification('Welcome to AnonClub! 🎭', 'success');
+            }, 1000);
+        });
+
+        // Add form validation (if you add a contact form)
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Console message for developers
+       
+        // Performance optimization - Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debounce to scroll events
+        const debouncedScroll = debounce(() => {
+            revealOnScroll();
+        }, 10);
+
+        window.addEventListener('scroll', debouncedScroll);
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            // Press 'Escape' to close mobile menu
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = mobileMenu.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+            
+            // Press 'Home' to scroll to top
+            if (e.key === 'Home') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // Press 'End' to scroll to bottom
+            if (e.key === 'End') {
+                e.preventDefault();
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+        });
+
+        // Add click outside to close mobile menu
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container') && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = mobileMenu.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Add touch swipe support for mobile menu
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50 && navLinks.classList.contains('active')) {
+                // Swipe left - close menu
+                navLinks.classList.remove('active');
+                const icon = mobileMenu.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Add loading state for buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    return; // Don't add loading for anchor links
+                }
+                
+                const originalContent = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                this.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalContent;
+                    this.style.pointerEvents = 'auto';
+                }, 2000);
+            });
+        });
+
+        // Add price calculator (optional feature)
+        function calculatePrice(basePrice, quantity) {
+            let discount = 0;
+            if (quantity >= 5) discount = 0.1; // 10% discount
+            if (quantity >= 10) discount = 0.15; // 15% discount
+            if (quantity >= 20) discount = 0.2; // 20% discount
+            
+            return (basePrice * quantity * (1 - discount)).toFixed(2);
+        }
+
+        // Add testimonials rotation (if you add testimonials section)
+        let currentTestimonial = 0;
+        function rotateTestimonials() {
+            const testimonials = document.querySelectorAll('.testimonial');
+            if (testimonials.length > 0) {
+                testimonials.forEach((t, index) => {
+                    t.style.display = index === currentTestimonial ? 'block' : 'none';
+                });
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            }
+        }
+        setInterval(rotateTestimonials, 5000);
+
+        // Add live chat indicator (optional)
+        function addLiveChatIndicator() {
+            const indicator = document.createElement('div');
+            indicator.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                right: 30px;
+                background: var(--secondary);
+                color: white;
+                padding: 0.75rem 1.25rem;
+                border-radius: 25px;
+                box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+                z-index: 999;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+                animation: pulse 2s ease-in-out infinite;
+                font-weight: 600;
+                font-size: 0.9rem;
+            `;
+            indicator.innerHTML = `
+                <div style="width: 8px; height: 8px; background: white; border-radius: 50%; animation: blink 1.5s ease-in-out infinite;"></div>
+                <span>We're Online!</span>
+            `;
+            
+            indicator.addEventListener('click', () => {
+                window.location.href = '#contact';
+            });
+            
+            document.body.appendChild(indicator);
+            
+            // Add blink animation
+            const blinkStyle = document.createElement('style');
+            blinkStyle.textContent = `
+                @keyframes blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.3; }
+                }
+            `;
+            document.head.appendChild(blinkStyle);
+        }
+
+        // Uncomment to enable live chat indicator
+        // addLiveChatIndicator();
+
+        // Add cookie consent banner (optional)
+        function showCookieConsent() {
+            if (!localStorage.getItem('cookieConsent')) {
+                const banner = document.createElement('div');
+                banner.style.cssText = `
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: rgba(15, 23, 42, 0.98);
+                    backdrop-filter: blur(10px);
+                    padding: 1.5rem;
+                    z-index: 10000;
+                    border-top: 1px solid var(--border);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 2rem;
+                    flex-wrap: wrap;
+                `;
+                banner.innerHTML = `
+                    <p style="color: var(--gray-light); margin: 0; flex: 1; min-width: 250px;">
+                        We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+                    </p>
+                    <button id="acceptCookies" class="btn btn-primary" style="margin: 0;">
+                        Accept
+                    </button>
+                `;
+                
+                document.body.appendChild(banner);
+                
+                document.getElementById('acceptCookies').addEventListener('click', () => {
+                    localStorage.setItem('cookieConsent', 'true');
+                    banner.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => banner.remove(), 300);
+                });
+            }
+        }
+
+        // Uncomment to enable cookie consent
+        // showCookieConsent();
+
+        // Add analytics tracking (placeholder - replace with your analytics code)
+        function trackEvent(category, action, label) {
+            console.log(`Event tracked: ${category} - ${action} - ${label}`);
+            // Replace with your analytics code (Google Analytics, etc.)
+            // gtag('event', action, { 'event_category': category, 'event_label': label });
+        }
+
+        // Track button clicks
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.textContent.trim();
+                trackEvent('Button', 'Click', text);
+            });
+        });
+
+        // Track package selections
+        document.querySelectorAll('.package-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const packageName = this.querySelector('.package-title').textContent;
+                trackEvent('Package', 'View', packageName);
+            });
+        });
+
+        // Add error handling for external links
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                try {
+                    trackEvent('External Link', 'Click', this.href);
+                } catch (error) {
+                    console.error('Error tracking external link:', error);
+                }
+            });
+        });
+
+        // Add page visibility tracking
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                trackEvent('Page', 'Hidden', window.location.pathname);
+            } else {
+                trackEvent('Page', 'Visible', window.location.pathname);
+            }
+        });
+
+        // Add session duration tracking
+        let sessionStart = Date.now();
+        window.addEventListener('beforeunload', () => {
+            const duration = Math.round((Date.now() - sessionStart) / 1000);
+            trackEvent('Session', 'Duration', `${duration} seconds`);
+        });
+
+        // Initialize all features on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ AnonClub loaded successfully!');
+            
+            // Add any initialization code here
+            revealOnScroll();
+            
+            // Preload critical resources
+            const criticalLinks = document.querySelectorAll('link[rel="stylesheet"]');
+            criticalLinks.forEach(link => {
+                link.setAttribute('importance', 'high');
+            });
+        });
+
+        // Service Worker registration (for PWA - optional)
+        if ('serviceWorker' in navigator) {
+            // Uncomment to enable PWA features
+            /*
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered:', registration))
+                    .catch(error => console.log('SW registration failed:', error));
+            });
+            */
+        }
+
+        // Add print styles optimization
+        window.addEventListener('beforeprint', () => {
+            document.body.classList.add('printing');
+        });
+
+        window.addEventListener('afterprint', () => {
+            document.body.classList.remove('printing');
+        });
+
+        // Final console message
+        console.log('%c✨ All features loaded successfully!', 'color: #10b981; font-size: 14px; font-weight: bold;');
+        console.log('%c📧 Contact: support@vccpro.com', 'color: #6366f1; font-size: 12px;');
+    </script>
+</body>
+</html>
+
+
+
+
