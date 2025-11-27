@@ -14,13 +14,13 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary: #10b981;
-            --secondary-dark: #059669;
-            --accent: #f59e0b;
-            --accent-dark: #d97706;
+            --primary: #c9a55a;
+            --primary-dark: #a38748;
+            --primary-light: #d4b366;
+            --secondary: #c9a55a;
+            --secondary-dark: #a38748;
+            --accent: #c9a55a;
+            --accent-dark: #a38748;
             --danger: #ef4444;
             --dark: #0f172a;
             --dark-light: #1e293b;
@@ -344,13 +344,13 @@
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35);
+            color: #1a1a1a;
+            box-shadow: 0 12px 28px rgba(201, 165, 90, 0.25);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.45);
+            box-shadow: 0 20px 40px rgba(201, 165, 90, 0.35);
         }
 
         .btn-secondary {
@@ -1286,11 +1286,16 @@
     </style>
 </head>
 <body>
+    <!-- Black Friday Banner -->
+    <div style="background: #2c2c2c; color: #c9a55a; text-align: center; padding: 10px; font-weight: 600; font-size: 0.9rem; position: fixed; top: 0; width: 100%; z-index: 10002; border-bottom: 1px solid rgba(201, 165, 90, 0.2);">
+        Black Friday Sale - Save 30% on all packages | Limited time offer
+    </div>
+
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" style="top: 41px;">
         <div class="container">
             <div class="nav-container">
                 <div class="logo">
@@ -1317,10 +1322,35 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
+                    <!-- Countdown Timer -->
+                    <div style="background: rgba(44, 44, 44, 0.6); border: 1px solid rgba(201, 165, 90, 0.25); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; backdrop-filter: blur(10px);">
+                        <div style="color: #c9a55a; font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem; text-align: center; letter-spacing: 0.5px;">
+                            Black Friday Sale Ends In
+                        </div>
+                        <div id="countdown" style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+                            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(201, 165, 90, 0.2); border-radius: 6px; padding: 0.75rem 1rem; min-width: 65px; text-align: center;">
+                                <div id="days" style="font-size: 1.75rem; font-weight: 700; color: #c9a55a;">00</div>
+                                <div style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; margin-top: 0.25rem;">Days</div>
+                            </div>
+                            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(201, 165, 90, 0.2); border-radius: 6px; padding: 0.75rem 1rem; min-width: 65px; text-align: center;">
+                                <div id="hours" style="font-size: 1.75rem; font-weight: 700; color: #c9a55a;">00</div>
+                                <div style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; margin-top: 0.25rem;">Hours</div>
+                            </div>
+                            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(201, 165, 90, 0.2); border-radius: 6px; padding: 0.75rem 1rem; min-width: 65px; text-align: center;">
+                                <div id="minutes" style="font-size: 1.75rem; font-weight: 700; color: #c9a55a;">00</div>
+                                <div style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; margin-top: 0.25rem;">Mins</div>
+                            </div>
+                            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(201, 165, 90, 0.2); border-radius: 6px; padding: 0.75rem 1rem; min-width: 65px; text-align: center;">
+                                <div id="seconds" style="font-size: 1.75rem; font-weight: 700; color: #c9a55a;">00</div>
+                                <div style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; margin-top: 0.25rem;">Secs</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h1>AnonClub </h1>
                     <p>
                     </p>
-                    
+
                     <!-- Pay Later Banner -->
                     <div class="pay-later-banner">
                         <div class="pay-later-icon">
@@ -1450,11 +1480,17 @@
                 
 
                 <div class="package-card scroll-reveal">
-                    <div class="package-price">100€</div>
-                    <h3 class="package-title">Basic </h3>
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(201, 165, 90, 0.15); color: #c9a55a; padding: 5px 12px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; border: 1px solid rgba(201, 165, 90, 0.3);">
+                        Save 30%
+                    </div>
+                    <div class="package-price">
+                        <span style="font-size: 1.5rem; color: #64748b; text-decoration: line-through; margin-right: 0.5rem;">143€</span>
+                        100€
+                    </div>
+                    <h3 class="package-title">Basic</h3>
                     <ul class="package-features">
-                        <li><i class="fas fa-check"></i>  550€-600€           Balance</li>
-                        <li><i class="fas fa-times" style="color: #ef4444;"></i></i> VIP Group</li>
+                        <li><i class="fas fa-check"></i>  550€-600€ Balance</li>
+                        <li><i class="fas fa-times" style="color: #ef4444;"></i> VIP Group</li>
                         <li><i class="fas fa-check"></i> Global Acceptance</li>
                         <li><i class="fas fa-check"></i> Fast Delivery</li>
                         <li><i class="fas fa-check"></i> 24/7 Support</li>
@@ -1465,13 +1501,19 @@
 
                 <div class="package-card featured scroll-reveal">
                     <div class="package-badge">Popular</div>
-                    <div class="package-price">139.50€</div>
-                    <h3 class="package-title">Standard </h3>
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(201, 165, 90, 0.15); color: #c9a55a; padding: 5px 12px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; border: 1px solid rgba(201, 165, 90, 0.3);">
+                        Save 30%
+                    </div>
+                    <div class="package-price">
+                        <span style="font-size: 1.5rem; color: #64748b; text-decoration: line-through; margin-right: 0.5rem;">199€</span>
+                        139.50€
+                    </div>
+                    <h3 class="package-title">Standard</h3>
                     <ul class="package-features">
-                       <li><i class="fas fa-check"></i> </li>
-                         <li><i class="fas fa-times" style="color: #ef4444;"></i></i> </li>
-                        <li><i class="fas fa-check"></i></li>
-                        <li><i class="fas fa-check"></i> </li>
+                       <li><i class="fas fa-check"></i> Premium Features</li>
+                         <li><i class="fas fa-times" style="color: #ef4444;"></i> VIP Group</li>
+                        <li><i class="fas fa-check"></i> Global Acceptance</li>
+                        <li><i class="fas fa-check"></i> Fast Delivery</li>
                         <li><i class="fas fa-check"></i> 24/7 Support</li>
                         <li><i class="fas fa-check"></i> Money Back Guarantee</li>
                     </ul>
@@ -1479,29 +1521,41 @@
                 </div>
 
                 <div class="package-card scroll-reveal">
-                    <div class="package-price">250€</div>
-                    <h3 class="package-title">Premium s</h3>
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(201, 165, 90, 0.15); color: #c9a55a; padding: 5px 12px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; border: 1px solid rgba(201, 165, 90, 0.3);">
+                        Save 30%
+                    </div>
+                    <div class="package-price">
+                        <span style="font-size: 1.5rem; color: #64748b; text-decoration: line-through; margin-right: 0.5rem;">357€</span>
+                        250€
+                    </div>
+                    <h3 class="package-title">Premium</h3>
                     <ul class="package-features">
-                        <li><i class="fas fa-check"></i> </li>
+                        <li><i class="fas fa-check"></i> All Features</li>
                         <li><i class="fas fa-check"></i> VIP Group</li>
                         <li><i class="fas fa-check"></i> Global Acceptance</li>
                         <li><i class="fas fa-check"></i> Fast Delivery</li>
                         <li><i class="fas fa-check"></i> 24/7 Support</li>
-                        <li><i class="fas fa-check"></i>Money Back Guarantee</li>
+                        <li><i class="fas fa-check"></i> Money Back Guarantee</li>
                     </ul>
                     <a href="order2.html" class="btn btn-primary">Get Started</a>
                 </div>
                 <div class="package-card tutorial scroll-reveal">
                     <div class="package-badge">Tutorial</div>
-                    <div class="package-price">500€</div>
-                    <h3 class="package-title"> Tutorial</h3>
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(201, 165, 90, 0.15); color: #c9a55a; padding: 5px 12px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; border: 1px solid rgba(201, 165, 90, 0.3);">
+                        Save 30%
+                    </div>
+                    <div class="package-price">
+                        <span style="font-size: 1.5rem; color: #64748b; text-decoration: line-through; margin-right: 0.5rem;">714€</span>
+                        500€
+                    </div>
+                    <h3 class="package-title">Tutorial</h3>
                     <ul class="package-features">
-                        <li><i class="fas fa-check"></i></li>
+                        <li><i class="fas fa-check"></i> Complete Training</li>
                         <li><i class="fas fa-check"></i> VIP Group</li>
-                        <li><i class="fas fa-check"></i></li>
-                        <li><i class="fas fa-check"></i>  </li>
-                        <li><i class="fas fa-check"></i> </li>
-                        <li><i class="fas fa-check"></i></li>
+                        <li><i class="fas fa-check"></i> All Resources</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                        <li><i class="fas fa-check"></i> Bonus Materials</li>
                         <li><i class="fas fa-check"></i> Lifetime Access</li>
                     </ul>
                     <a href="https://t.me/ANONCLUBADMIN" class="btn btn-primary">Get Tutorial</a>
@@ -2551,6 +2605,30 @@
         window.addEventListener('afterprint', () => {
             document.body.classList.remove('printing');
         });
+
+        // Black Friday Countdown Timer
+        function updateCountdown() {
+            const blackFridayEnd = new Date('2024-12-02T23:59:59').getTime();
+            const now = new Date().getTime();
+            const distance = blackFridayEnd - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div style="color: #c9a55a; font-size: 1.2rem; font-weight: 600;">Sale Ended</div>';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
 
         // Final console message
         console.log('%c✨ All features loaded successfully!', 'color: #10b981; font-size: 14px; font-weight: bold;');
